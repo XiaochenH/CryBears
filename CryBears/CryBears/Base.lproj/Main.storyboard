@@ -97,8 +97,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="pYC-fc-BpR" kind="show" id="zcS-Tt-et3"/>
-                        <segue destination="lIC-Lx-RKg" kind="show" id="Ra3-fr-nj0"/>
+                        <segue destination="pYC-fc-BpR" kind="show" identifier="loginToRegister" id="zcS-Tt-et3"/>
+                        <segue destination="lIC-Lx-RKg" kind="show" identifier="loginToMap" id="Ra3-fr-nj0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -192,8 +192,8 @@
                         <viewLayoutGuide key="safeArea" id="f7w-cH-SZL"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="oYT-uW-8qW"/>
-                        <segue destination="lIC-Lx-RKg" kind="show" id="zLd-rM-SMa"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="registertoLogin" id="oYT-uW-8qW"/>
+                        <segue destination="lIC-Lx-RKg" kind="show" identifier="registerToMap" id="zLd-rM-SMa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLl-08-2gI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -216,7 +216,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="7eH-CT-yIs"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Write"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -233,8 +233,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="3mC-Zy-LKu"/>
                     <connections>
-                        <segue destination="sld-g9-kfw" kind="show" id="8wb-34-Mz9"/>
-                        <segue destination="g0j-3V-0yV" kind="show" id="Epj-h4-sxl"/>
+                        <segue destination="sld-g9-kfw" kind="show" identifier="mapToPost" id="8wb-34-Mz9"/>
+                        <segue destination="g0j-3V-0yV" kind="show" identifier="mapToSubmit" id="Epj-h4-sxl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBG-m6-zn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -310,7 +310,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="rsv-Jk-qEN"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Submit"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ASm-pH-E5M">
                                 <rect key="frame" x="0.0" y="64" width="375" height="543"/>
@@ -344,12 +344,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="1fH-EP-1Vn">
-                                <rect key="frame" x="0.0" y="140" width="375" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="Rb2-V9-huI"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXi-wc-Ydf">
                                 <rect key="frame" x="159" y="457" width="57" height="60"/>
                                 <constraints>
@@ -364,6 +358,12 @@
                                 </constraints>
                                 <state key="normal" title="Login"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="1fH-EP-1Vn">
+                                <rect key="frame" x="0.0" y="191" width="375" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Rb2-V9-huI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -373,13 +373,13 @@
                             <constraint firstItem="FXi-wc-Ydf" firstAttribute="centerX" secondItem="SHB-V2-EIl" secondAttribute="centerX" id="FJj-z0-dLi"/>
                             <constraint firstItem="SHB-V2-EIl" firstAttribute="bottom" secondItem="FXi-wc-Ydf" secondAttribute="bottom" constant="150" id="bvM-oq-bKn"/>
                             <constraint firstItem="1fH-EP-1Vn" firstAttribute="leading" secondItem="SHB-V2-EIl" secondAttribute="leading" id="faK-gp-Pag"/>
-                            <constraint firstItem="1fH-EP-1Vn" firstAttribute="top" secondItem="SHB-V2-EIl" secondAttribute="top" constant="120" id="gSn-qS-vkk"/>
+                            <constraint firstItem="1fH-EP-1Vn" firstAttribute="top" secondItem="SHB-V2-EIl" secondAttribute="top" constant="171" id="gSn-qS-vkk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SHB-V2-EIl"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="hka-dx-CYJ"/>
-                        <segue destination="pYC-fc-BpR" kind="show" id="6Fr-A5-rIs"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="homeToLogin" id="hka-dx-CYJ"/>
+                        <segue destination="pYC-fc-BpR" kind="show" identifier="homeToRegister" id="6Fr-A5-rIs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLe-rt-1f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -392,7 +392,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zLd-rM-SMa"/>
-        <segue reference="6Fr-A5-rIs"/>
-        <segue reference="hka-dx-CYJ"/>
+        <segue reference="zcS-Tt-et3"/>
+        <segue reference="oYT-uW-8qW"/>
     </inferredMetricsTieBreakers>
 </document>
