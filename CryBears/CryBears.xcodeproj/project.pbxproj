@@ -18,6 +18,11 @@
 		18F3BE7E219D1AD0003DDD91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F3BE7D219D1AD0003DDD91 /* GoogleService-Info.plist */; };
 		3EE0C136CDBA32F4D2F5B8C1 /* Pods_CryBearsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FA57C75050E4FBF39C648F /* Pods_CryBearsUITests.framework */; };
 		899B892F8F371FE942BC996A /* Pods_CryBears.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806436E08A9771F0E931E87A /* Pods_CryBears.framework */; };
+		A17078A421AF8C8300795852 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17078A321AF8C8300795852 /* RegisterViewController.swift */; };
+		A17078A621AF8CAA00795852 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17078A521AF8CAA00795852 /* MapViewController.swift */; };
+		A17078A821AF8CD500795852 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17078A721AF8CD500795852 /* PostViewController.swift */; };
+		A17078AA21AF8CF300795852 /* ViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17078A921AF8CF300795852 /* ViewViewController.swift */; };
+		A17078AC21AF8D6900795852 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17078AB21AF8D6900795852 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,11 @@
 		8AD41F886574258E72D60FA9 /* Pods-CryBearsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryBearsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryBearsTests/Pods-CryBearsTests.release.xcconfig"; sourceTree = "<group>"; };
 		91871379279CF3BF3BAEB23B /* Pods-CryBearsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryBearsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryBearsUITests/Pods-CryBearsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9AF73E31F91CCDEB128EE7CA /* Pods-CryBearsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryBearsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryBearsUITests/Pods-CryBearsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A17078A321AF8C8300795852 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		A17078A521AF8CAA00795852 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A17078A721AF8CD500795852 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		A17078A921AF8CF300795852 /* ViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewViewController.swift; sourceTree = "<group>"; };
+		A17078AB21AF8D6900795852 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A1FA57C75050E4FBF39C648F /* Pods_CryBearsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryBearsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE570721C48496A5F1ECE81A /* Pods-CryBears.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryBears.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryBears/Pods-CryBears.debug.xcconfig"; sourceTree = "<group>"; };
 		D59861D0D0ADF50022ECE724 /* Pods-CryBears.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryBears.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryBears/Pods-CryBears.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +146,11 @@
 				18F3BE58219D1A96003DDD91 /* LaunchScreen.storyboard */,
 				18F3BE5B219D1A96003DDD91 /* Info.plist */,
 				18F3BE7D219D1AD0003DDD91 /* GoogleService-Info.plist */,
+				A17078A921AF8CF300795852 /* ViewViewController.swift */,
+				A17078A521AF8CAA00795852 /* MapViewController.swift */,
+				A17078AB21AF8D6900795852 /* LoginViewController.swift */,
+				A17078A321AF8C8300795852 /* RegisterViewController.swift */,
+				A17078A721AF8CD500795852 /* PostViewController.swift */,
 			);
 			path = CryBears;
 			sourceTree = "<group>";
@@ -397,8 +412,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17078AC21AF8D6900795852 /* LoginViewController.swift in Sources */,
+				A17078A821AF8CD500795852 /* PostViewController.swift in Sources */,
 				18F3BE52219D1A95003DDD91 /* ViewController.swift in Sources */,
 				18F3BE50219D1A95003DDD91 /* AppDelegate.swift in Sources */,
+				A17078A621AF8CAA00795852 /* MapViewController.swift in Sources */,
+				A17078A421AF8C8300795852 /* RegisterViewController.swift in Sources */,
+				A17078AA21AF8CF300795852 /* ViewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
