@@ -7,6 +7,12 @@ target 'CryBears' do
 
   # Pods for CryBears
   pod 'Firebase/Core'
+  pod 'FirebaseAuth'
+  pod 'FirebaseStorage'
+  pod 'SDWebImage'
+  pod 'MBProgressHUD'
+  pod 'SDWebImage'
+  pod 'FirebaseDatabase'
 
   target 'CryBearsTests' do
     inherit! :search_paths

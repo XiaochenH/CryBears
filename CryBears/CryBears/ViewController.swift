@@ -14,7 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-
+    
+    @IBAction func logInPressed(_ sender: Any) {
+        performSegue(withIdentifier:"segueMainToLogIn", sender: self)
+    }
+    
+    @IBAction func registerPressed(_ sender: Any) {
+        performSegue(withIdentifier:"segueMainToRegister", sender: self)
+    }
 }
-

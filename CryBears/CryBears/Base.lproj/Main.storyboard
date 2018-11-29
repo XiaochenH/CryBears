@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wfG-I2-YlP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wfG-I2-YlP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,10 +20,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eac-EM-pxM">
                                 <rect key="frame" x="168" y="408" width="39" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="logInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FVY-lA-Ba3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A20-fB-whT">
                                 <rect key="frame" x="147" y="446" width="81" height="30"/>
                                 <state key="normal" title="Or, Register"/>
+                                <connections>
+                                    <action selector="registerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="43u-JQ-FME"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lIS-a5-i4r">
                                 <rect key="frame" x="116" y="316" width="116" height="29"/>
@@ -97,8 +103,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="pYC-fc-BpR" kind="show" identifier="loginToRegister" id="zcS-Tt-et3"/>
-                        <segue destination="lIC-Lx-RKg" kind="show" identifier="loginToMap" id="Ra3-fr-nj0"/>
+                        <outlet property="emailTextField" destination="lIS-a5-i4r" id="0QU-X0-dwH"/>
+                        <outlet property="passwordTextField" destination="ofE-Wg-g7b" id="Ekf-wQ-jtl"/>
+                        <segue destination="pYC-fc-BpR" kind="show" identifier="segueLogInToRegister" id="zcS-Tt-et3"/>
+                        <segue destination="lIC-Lx-RKg" kind="show" identifier="segueLogInToMapPage" id="Ra3-fr-nj0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -125,10 +133,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7c-NK-7ny">
                                 <rect key="frame" x="159" y="401" width="57" height="30"/>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="registerPressed:" destination="pYC-fc-BpR" eventType="touchUpInside" id="77r-mq-CLx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpq-Ks-AEw">
                                 <rect key="frame" x="155" y="439" width="65" height="30"/>
                                 <state key="normal" title="Or, Login"/>
+                                <connections>
+                                    <action selector="logInPressed:" destination="pYC-fc-BpR" eventType="touchUpInside" id="Dn9-vL-M0d"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6s-Op-VXi">
                                 <rect key="frame" x="106" y="309" width="139" height="30"/>
@@ -192,8 +206,10 @@
                         <viewLayoutGuide key="safeArea" id="f7w-cH-SZL"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="registertoLogin" id="oYT-uW-8qW"/>
-                        <segue destination="lIC-Lx-RKg" kind="show" identifier="registerToMap" id="zLd-rM-SMa"/>
+                        <outlet property="emailTextField" destination="H6s-Op-VXi" id="hr6-zg-3xw"/>
+                        <outlet property="passwordTextField" destination="0uE-hc-HS8" id="u6R-V3-Rbi"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueRegisterToLogIn" id="oYT-uW-8qW"/>
+                        <segue destination="lIC-Lx-RKg" kind="show" identifier="segueRegisterToMapPage" id="zLd-rM-SMa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLl-08-2gI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -233,8 +249,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="3mC-Zy-LKu"/>
                     <connections>
-                        <segue destination="sld-g9-kfw" kind="show" identifier="mapToPost" id="8wb-34-Mz9"/>
-                        <segue destination="g0j-3V-0yV" kind="show" identifier="mapToSubmit" id="Epj-h4-sxl"/>
+                        <segue destination="sld-g9-kfw" kind="show" identifier="segueMapToView" id="8wb-34-Mz9"/>
+                        <segue destination="g0j-3V-0yV" kind="show" identifier="segueMapToPost" id="Epj-h4-sxl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBG-m6-zn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -339,7 +355,7 @@
         <!--View Controller-->
         <scene sceneID="gEw-ah-WZq">
             <objects>
-                <viewController id="wfG-I2-YlP" sceneMemberID="viewController">
+                <viewController id="wfG-I2-YlP" customClass="ViewController" customModule="CryBears" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I6N-tD-qXO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -350,6 +366,9 @@
                                     <constraint firstAttribute="height" constant="60" id="cp8-5l-d3U"/>
                                 </constraints>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="registerPressed:" destination="wfG-I2-YlP" eventType="touchUpInside" id="47o-nm-x4s"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkA-sP-A05">
                                 <rect key="frame" x="168.5" y="367" width="38" height="60"/>
@@ -357,6 +376,10 @@
                                     <constraint firstAttribute="height" constant="60" id="uJt-dq-ipw"/>
                                 </constraints>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="logInPressed:" destination="wfG-I2-YlP" eventType="touchUpInside" id="0E8-UE-c7d"/>
+                                    <action selector="logInPressed:" destination="yI1-wK-Feb" eventType="touchUpInside" id="ICu-nC-ukX"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="1fH-EP-1Vn">
                                 <rect key="frame" x="0.0" y="191" width="375" height="120"/>
@@ -378,11 +401,12 @@
                         <viewLayoutGuide key="safeArea" id="SHB-V2-EIl"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="homeToLogin" id="hka-dx-CYJ"/>
-                        <segue destination="pYC-fc-BpR" kind="show" identifier="homeToRegister" id="6Fr-A5-rIs"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueMainToLogIn" id="hka-dx-CYJ"/>
+                        <segue destination="pYC-fc-BpR" kind="show" identifier="segueMainToRegister" id="6Fr-A5-rIs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLe-rt-1f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="yI1-wK-Feb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-759" y="537"/>
         </scene>
@@ -391,8 +415,8 @@
         <image name="AppLogo" width="1412" height="404"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ra3-fr-nj0"/>
-        <segue reference="zcS-Tt-et3"/>
-        <segue reference="oYT-uW-8qW"/>
+        <segue reference="zLd-rM-SMa"/>
+        <segue reference="6Fr-A5-rIs"/>
+        <segue reference="hka-dx-CYJ"/>
     </inferredMetricsTieBreakers>
 </document>
