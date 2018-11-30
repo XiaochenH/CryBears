@@ -10,8 +10,14 @@ import UIKit
 
 class ViewViewController: UIViewController {
 
+    @IBOutlet weak var textfield: UITextView!
+    var labelText: String?
+    @IBAction func like(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        textfield.text = labelText
 
         // Do any additional setup after loading the view.
     }

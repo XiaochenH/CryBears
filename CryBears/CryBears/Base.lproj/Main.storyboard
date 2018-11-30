@@ -233,6 +233,9 @@
                                     <constraint firstAttribute="height" constant="60" id="7eH-CT-yIs"/>
                                 </constraints>
                                 <state key="normal" title="Write"/>
+                                <connections>
+                                    <action selector="write:" destination="8Qk-QT-ssR" eventType="touchUpInside" id="2PA-4H-QR6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -250,8 +253,8 @@
                     <navigationItem key="navigationItem" id="3mC-Zy-LKu"/>
                     <connections>
                         <outlet property="map" destination="Ib2-It-agD" id="cfe-T2-gWp"/>
-                        <segue destination="sld-g9-kfw" kind="show" identifier="segueMapToView" id="8wb-34-Mz9"/>
-                        <segue destination="g0j-3V-0yV" kind="show" identifier="segueMapToPost" id="Epj-h4-sxl"/>
+                        <segue destination="sld-g9-kfw" kind="show" identifier="seepost" id="8wb-34-Mz9"/>
+                        <segue destination="g0j-3V-0yV" kind="show" identifier="post" id="Epj-h4-sxl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBG-m6-zn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -288,6 +291,9 @@
                                     <constraint firstAttribute="height" constant="60" id="F00-wx-FeJ"/>
                                 </constraints>
                                 <state key="normal" title="Like"/>
+                                <connections>
+                                    <action selector="like:" destination="sld-g9-kfw" eventType="touchUpInside" id="Cve-iL-UK9"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PAS-S3-2J5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="543"/>
@@ -309,6 +315,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kMV-Rv-QQ1"/>
                     </view>
+                    <connections>
+                        <outlet property="textfield" destination="PAS-S3-2J5" id="1Wp-F3-Xyf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbL-BP-7sp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -328,6 +337,9 @@
                                     <constraint firstAttribute="height" constant="60" id="rsv-Jk-qEN"/>
                                 </constraints>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submit:" destination="g0j-3V-0yV" eventType="touchUpInside" id="hJC-Ha-Vyy"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ASm-pH-E5M">
                                 <rect key="frame" x="0.0" y="64" width="375" height="543"/>
@@ -348,6 +360,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s4m-CD-WOH"/>
                     </view>
+                    <connections>
+                        <outlet property="postcontent" destination="ASm-pH-E5M" id="1ZP-fO-dqZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lea-EQ-2wm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
