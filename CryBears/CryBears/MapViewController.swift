@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController{
     
     
     @IBAction func write(_ sender: Any) {
@@ -122,10 +122,8 @@ class MapViewController: UIViewController {
         performSegue(withIdentifier: "seepost", sender: view.annotation?.subtitle as Any?)
     }**/
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
-            performSegue(withIdentifier: "seepost", sender: view.annotation?.subtitle as Any?)
-        }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        performSegue(withIdentifier: "seepost", sender: view.annotation?.subtitle as Any?)
     }
     
     var lat = 37.4

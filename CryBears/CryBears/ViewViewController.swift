@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewViewController: UIViewController {
+    
+    
 
     @IBOutlet weak var textfield: UITextView!
+    
     var labelText: String?
+    var ref: DatabaseReference?
+    var postid: String?
+    
     @IBAction func like(_ sender: Any) {
+        ref = Database.database().reference()
+        
+        //ref?.child("Posts").child(postid).updateChildValues(["likes": 2])
     }
     
     override func viewDidLoad() {
