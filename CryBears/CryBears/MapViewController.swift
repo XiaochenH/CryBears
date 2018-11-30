@@ -16,19 +16,14 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var map: MKMapView!
     
-    
-    
     let locationManager = CLLocationManager()
-    let regionInMeters: Double = 1000
-    
     var ref: DatabaseReference?
-    var Handle: DatabaseHandle?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkLocationServices()
+        centerViewOnBerkeley()
         
         ref = Database.database().reference()
         
@@ -41,18 +36,32 @@ class MapViewController: UIViewController {
             
             for child in children {
                 guard let dict = child.value as? [String: Any] else { continue }
-                array.append(["content": dict["content"], "lat": dict["lat"], "lon": dict["lon"]])
+                array.append(["post": child.key, "lat": dict["lat"], "lon": dict["lon"], "content": dict["content"]])
             }
             
             print(array)
             
             array.forEach { item in
-                print(item)
-                let userpin = MKPointAnnotation()
+                print(item["lat"]!!)
+                print(item["lon"]!!)
+                let pin = MKPointAnnotation()
                 let coord = CLLocationCoordinate2DMake(item["lat"] as! CLLocationDegrees, item["lon"] as! CLLocationDegrees)
-                userpin.coordinate = coord
-                userpin.title = item["content"] as? String
-                self.map.addAnnotation(userpin)
+                pin.coordinate = coord
+
+                if let post = item["content"] {
+                    let str = post as! String
+                    print(str)
+                    if ((post! as! String).count > 10) {
+                        pin.title = str
+                    } else {
+                        let firstSpace = str.firstIndex(of: " ") ?? str.endIndex
+                        let rest = str[..<firstSpace]
+                        let secondSpace = rest.firstIndex(of: " ") ?? rest.endIndex
+                        let restofrest = str[..<secondSpace] + "..."
+                        pin.title = String(restofrest)
+                    }
+                }
+                self.map.addAnnotation(pin)
                 
             }
         })
@@ -60,67 +69,13 @@ class MapViewController: UIViewController {
         
     }
     
-    //2
-    func setupLocationManager() {
-        locationManager.delegate = self as? CLLocationManagerDelegate
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    
-    //4
-    func centerViewOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            map.setRegion(region, animated: true)
-            
-            
-        }
-    }
-    
-    //1
-    func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setupLocationManager()
-            checkLocationAuthorization()
-        } else {
-            // Show alert letting the user know they have to turn this on.
-        }
-    }
-    
-    //3
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-            map.showsUserLocation = true
-            centerViewOnUserLocation()
-            locationManager.startUpdatingLocation()
-            break
-        case .denied:
-            // Show alert instructing them how to turn on permissions
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            // Show an alert letting them know what's up
-            break
-        case .authorizedAlways:
-            break
-        }
-    }
-}
 
-extension MapViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        manager.startUpdatingLocation()
-        let myLocation = location.coordinate
-        
-        let region = MKCoordinateRegion(center: myLocation, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+    func centerViewOnBerkeley() {
+        let location = CLLocationCoordinate2DMake(37.8713, -122.2591)
+        let span = MKCoordinateSpan(latitudeDelta: 0.012, longitudeDelta: 0.012)
+        let region = MKCoordinateRegion(center: location, span: span)
         map.setRegion(region, animated: true)
     }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
-    }
+   
 }
+
