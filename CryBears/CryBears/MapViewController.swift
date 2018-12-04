@@ -20,19 +20,23 @@ class MapViewController: UIViewController{
     
     @IBOutlet weak var map: MKMapView!
     
-    let locationManager = CLLocationManager()
+    
+    var locationManager: CLLocationManager!
+    
     var ref: DatabaseReference?
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        map.delegate = self as? MKMapViewDelegate
         centerViewOnBerkeley()
-        self.map.showsUserLocation = true;
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager = CLLocationManager()
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.delegate = self
+            checkLocationAuthorization()
+        }
         
         ref = Database.database().reference()
-        
         ref?.child("Posts").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var array = [[String: Any?]]()
@@ -50,7 +54,7 @@ class MapViewController: UIViewController{
             array.forEach { item in
                 print(item["lat"]!!)
                 print(item["lon"]!!)
-                let pin = MKPointAnnotation()
+                let pin = CustomPointAnnotation()
                 let coord = CLLocationCoordinate2DMake(item["lat"] as! CLLocationDegrees, item["lon"] as! CLLocationDegrees)
                 pin.coordinate = coord
 
@@ -99,8 +103,11 @@ class MapViewController: UIViewController{
         }
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation!) -> MKAnnotationView! {
+        if !(annotation is CustomPointAnnotation) {
+            return nil
+        }
+        print("creating annotationView")
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
         
         if annotationView == nil {
@@ -112,30 +119,52 @@ class MapViewController: UIViewController{
         } else {
             annotationView!.annotation = annotation
         }
-        
-        
         return annotationView
     }
-    /**
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("The annotation was selected: \(String(describing: view.annotation?.title))")
-        performSegue(withIdentifier: "seepost", sender: view.annotation?.subtitle as Any?)
-    }**/
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("seepost")
         performSegue(withIdentifier: "seepost", sender: view.annotation?.subtitle as Any?)
     }
     
     var lat = 37.4
     var lon = -122.1
+
+    
+    
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            map.showsUserLocation = true
+            locationManager.startUpdatingLocation()
+            break
+        case .denied:
+            // Show alert instructing them how to turn on permissions
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            // Show an alert letting them know what's up
+            break
+        case .authorizedAlways:
+            break
+        }
+    }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         manager.startUpdatingLocation()
         let myLocation = location.coordinate
-        
         lat = myLocation.latitude
+        print(lat)
         lon = myLocation.longitude
+        print(lon)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
     }
 }
-
