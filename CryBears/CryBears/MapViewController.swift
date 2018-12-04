@@ -28,6 +28,7 @@ class MapViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         centerViewOnBerkeley()
+        map.delegate = self as? MKMapViewDelegate
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
