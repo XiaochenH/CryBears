@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wfG-I2-YlP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Qk-QT-ssR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -224,7 +224,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ib2-It-agD">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ib2-It-agD">
                                 <rect key="frame" x="0.0" y="64" width="375" height="543"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6v-9N-On6">
@@ -233,6 +233,9 @@
                                     <constraint firstAttribute="height" constant="60" id="7eH-CT-yIs"/>
                                 </constraints>
                                 <state key="normal" title="Write"/>
+                                <connections>
+                                    <action selector="write:" destination="8Qk-QT-ssR" eventType="touchUpInside" id="2PA-4H-QR6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -249,8 +252,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="3mC-Zy-LKu"/>
                     <connections>
-                        <segue destination="sld-g9-kfw" kind="show" identifier="segueMapToView" id="8wb-34-Mz9"/>
-                        <segue destination="g0j-3V-0yV" kind="show" identifier="segueMapToPost" id="Epj-h4-sxl"/>
+                        <outlet property="map" destination="Ib2-It-agD" id="cfe-T2-gWp"/>
+                        <segue destination="sld-g9-kfw" kind="show" identifier="seepost" id="8wb-34-Mz9"/>
+                        <segue destination="g0j-3V-0yV" kind="show" identifier="post" id="Epj-h4-sxl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBG-m6-zn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -287,6 +291,9 @@
                                     <constraint firstAttribute="height" constant="60" id="F00-wx-FeJ"/>
                                 </constraints>
                                 <state key="normal" title="Like"/>
+                                <connections>
+                                    <action selector="like:" destination="sld-g9-kfw" eventType="touchUpInside" id="Cve-iL-UK9"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PAS-S3-2J5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="543"/>
@@ -308,6 +315,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kMV-Rv-QQ1"/>
                     </view>
+                    <connections>
+                        <outlet property="textfield" destination="PAS-S3-2J5" id="1Wp-F3-Xyf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbL-BP-7sp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -327,6 +337,9 @@
                                     <constraint firstAttribute="height" constant="60" id="rsv-Jk-qEN"/>
                                 </constraints>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submit:" destination="g0j-3V-0yV" eventType="touchUpInside" id="hJC-Ha-Vyy"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ASm-pH-E5M">
                                 <rect key="frame" x="0.0" y="64" width="375" height="543"/>
@@ -347,6 +360,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s4m-CD-WOH"/>
                     </view>
+                    <connections>
+                        <outlet property="postcontent" destination="ASm-pH-E5M" id="1ZP-fO-dqZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lea-EQ-2wm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
