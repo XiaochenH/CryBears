@@ -19,8 +19,6 @@ class MapViewController: UIViewController{
     }
     
     @IBOutlet weak var map: MKMapView!
-    
-    
     var locationManager: CLLocationManager!
     
     var ref: DatabaseReference?
@@ -30,12 +28,10 @@ class MapViewController: UIViewController{
         centerViewOnBerkeley()
         map.delegate = self as? MKMapViewDelegate
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.delegate = self
-            checkLocationAuthorization()
-        }
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.delegate = self
+        checkLocationAuthorization()
         
         ref = Database.database().reference()
         ref?.child("Posts").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -55,7 +51,7 @@ class MapViewController: UIViewController{
             array.forEach { item in
                 print(item["lat"]!!)
                 print(item["lon"]!!)
-                let pin = CustomPointAnnotation()
+                let pin = MKPointAnnotation()
                 let coord = CLLocationCoordinate2DMake(item["lat"] as! CLLocationDegrees, item["lon"] as! CLLocationDegrees)
                 pin.coordinate = coord
 
@@ -104,34 +100,17 @@ class MapViewController: UIViewController{
         }
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation!) -> MKAnnotationView! {
-        if !(annotation is CustomPointAnnotation) {
-            return nil
-        }
-        print("creating annotationView")
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
-        
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
-            annotationView?.canShowCallout = true
-            
-            let btn = UIButton(type: .detailDisclosure)
-            annotationView!.rightCalloutAccessoryView = btn
-        } else {
-            annotationView!.annotation = annotation
-        }
-        return annotationView
-    }
     
+    /**
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print("seepost")
         performSegue(withIdentifier: "seepost", sender: view.annotation?.subtitle as Any?)
     }
+ **/
     
     var lat = 37.4
     var lon = -122.1
 
-    
     
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
@@ -167,5 +146,43 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
+    }
+}
+
+extension ViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        print("creating annotationView")
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
+        }
+        annotationView?.canShowCallout = false
+        return annotationView
+    }
+    /**
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation!) -> MKAnnotationView! {
+        if !(annotation is CustomPointAnnotation) {
+            return nil
+        }
+        print("creating annotationView")
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
+            annotationView?.canShowCallout = true
+            
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView!.rightCalloutAccessoryView = btn
+        } else {
+            annotationView!.annotation = annotation
+        }
+        return annotationView
+    }**/
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("The annotation was selected: \(String(describing: view.annotation?.title))")
     }
 }

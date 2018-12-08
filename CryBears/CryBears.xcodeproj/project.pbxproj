@@ -18,7 +18,6 @@
 		18F3BE7E219D1AD0003DDD91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F3BE7D219D1AD0003DDD91 /* GoogleService-Info.plist */; };
 		3EE0C136CDBA32F4D2F5B8C1 /* Pods_CryBearsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FA57C75050E4FBF39C648F /* Pods_CryBearsUITests.framework */; };
 		899B892F8F371FE942BC996A /* Pods_CryBears.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806436E08A9771F0E931E87A /* Pods_CryBears.framework */; };
-		A15DFC0521B6F8ED0015F9E9 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15DFC0421B6F8ED0015F9E9 /* CustomPointAnnotation.swift */; };
 		A17078A421AF8C8300795852 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17078A321AF8C8300795852 /* RegisterViewController.swift */; };
 		A17078A621AF8CAA00795852 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17078A521AF8CAA00795852 /* MapViewController.swift */; };
 		A17078A821AF8CD500795852 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17078A721AF8CD500795852 /* PostViewController.swift */; };
@@ -62,7 +61,6 @@
 		8AD41F886574258E72D60FA9 /* Pods-CryBearsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryBearsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryBearsTests/Pods-CryBearsTests.release.xcconfig"; sourceTree = "<group>"; };
 		91871379279CF3BF3BAEB23B /* Pods-CryBearsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryBearsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CryBearsUITests/Pods-CryBearsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9AF73E31F91CCDEB128EE7CA /* Pods-CryBearsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryBearsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CryBearsUITests/Pods-CryBearsUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		A15DFC0421B6F8ED0015F9E9 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		A17078A321AF8C8300795852 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A17078A521AF8CAA00795852 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A17078A721AF8CD500795852 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 				A17078AB21AF8D6900795852 /* LoginViewController.swift */,
 				A17078A321AF8C8300795852 /* RegisterViewController.swift */,
 				A17078A721AF8CD500795852 /* PostViewController.swift */,
-				A15DFC0421B6F8ED0015F9E9 /* CustomPointAnnotation.swift */,
 			);
 			path = CryBears;
 			sourceTree = "<group>";
@@ -429,7 +426,6 @@
 				18F3BE50219D1A95003DDD91 /* AppDelegate.swift in Sources */,
 				A17078A621AF8CAA00795852 /* MapViewController.swift in Sources */,
 				A17078A421AF8C8300795852 /* RegisterViewController.swift in Sources */,
-				A15DFC0521B6F8ED0015F9E9 /* CustomPointAnnotation.swift in Sources */,
 				A17078AA21AF8CF300795852 /* ViewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
