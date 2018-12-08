@@ -26,8 +26,7 @@ class MapViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         centerViewOnBerkeley()
-        map.delegate = self as? MKMapViewDelegate
-        
+        map.delegate = self
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.delegate = self
@@ -101,12 +100,7 @@ class MapViewController: UIViewController{
     }
     
     
-    /**
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print("seepost")
-        performSegue(withIdentifier: "seepost", sender: view.annotation?.subtitle as Any?)
-    }
- **/
+    
     
     var lat = 37.4
     var lon = -122.1
@@ -149,40 +143,24 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 }
 
-extension ViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        print("creating annotationView")
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
         
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
+            annotationView?.tintColor = .green
         }
+        annotationView?.image = UIImage(named: "pin")
         annotationView?.canShowCallout = false
         return annotationView
     }
-    /**
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation!) -> MKAnnotationView! {
-        if !(annotation is CustomPointAnnotation) {
-            return nil
-        }
-        print("creating annotationView")
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
-        
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
-            annotationView?.canShowCallout = true
-            
-            let btn = UIButton(type: .detailDisclosure)
-            annotationView!.rightCalloutAccessoryView = btn
-        } else {
-            annotationView!.annotation = annotation
-        }
-        return annotationView
-    }**/
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("The annotation was selected: \(String(describing: view.annotation?.title))")
+        print("selected: \(String(describing: view.annotation?.title))")
+        performSegue(withIdentifier: "seepost", sender: view.annotation?.subtitle as Any?)
     }
+
 }
