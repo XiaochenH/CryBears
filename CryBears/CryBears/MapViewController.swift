@@ -13,16 +13,18 @@ import Firebase
 
 class MapViewController: UIViewController{
     
-    
     @IBAction func write(_ sender: Any) {
-        performSegue(withIdentifier: "post", sender: self)
+        performSegue(withIdentifier: "segueMapToPostPage", sender: self)
     }
     
     @IBOutlet weak var map: MKMapView!
     var locationManager: CLLocationManager!
     
     var ref: DatabaseReference?
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewDidLoad()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         centerViewOnBerkeley()
@@ -42,7 +44,7 @@ class MapViewController: UIViewController{
             
             for child in children {
                 guard let dict = child.value as? [String: Any] else { continue }
-                array.append(["post": child.key, "lat": dict["lat"], "lon": dict["lon"], "content": dict["content"]])
+                array.append(["postid": child.key, "lat": dict["lat"], "lon": dict["lon"], "content": dict["content"]])
             }
             
             print(array)
@@ -56,7 +58,6 @@ class MapViewController: UIViewController{
 
                 if let post = item["content"] {
                     let str = post as! String
-                    print(str)
                     if ((post! as! String).count > 10) {
                         pin.title = str
                     } else {
@@ -66,17 +67,17 @@ class MapViewController: UIViewController{
                         let restofrest = str[..<secondSpace] + "..."
                         pin.title = String(restofrest)
                     }
+                }
+                
+                if let postid = item["postid"] {
+                    let str = postid as! String
                     pin.subtitle = str
                 }
                 self.map.addAnnotation(pin)
-                
             }
         })
-        
-        
     }
     
-
     func centerViewOnBerkeley() {
         let location = CLLocationCoordinate2DMake(37.8713, -122.2591)
         let span = MKCoordinateSpan(latitudeDelta: 0.012, longitudeDelta: 0.012)
@@ -86,11 +87,13 @@ class MapViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            if identifier == "seepost" {
+            if identifier == "segueMapToViewPage" {
                 if let dest = segue.destination as? ViewViewController{
-                    dest.labelText = sender as? String
+                    let pin = sender as! MKPointAnnotation
+                    dest.labelText = pin.title as? String
+                    dest.postid = pin.subtitle as? String
                 }
-            } else if identifier == "post" {
+            } else if identifier == "segueMapToPostPage" {
                 if let dest = segue.destination as? PostViewController{
                     dest.lat = lat
                     dest.lon = lon
@@ -99,13 +102,9 @@ class MapViewController: UIViewController{
         }
     }
     
-    
-    
-    
     var lat = 37.4
     var lon = -122.1
 
-    
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
@@ -153,14 +152,20 @@ extension MapViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
             annotationView?.tintColor = .green
         }
-        annotationView?.image = UIImage(named: "pin")
+        if (((annotationView!.annotation?.title)!)! != "My Location"){
+            annotationView?.image = UIImage(named: "pin")
+        }
+        
         annotationView?.canShowCallout = false
         return annotationView
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("selected: \(String(describing: view.annotation?.title))")
-        performSegue(withIdentifier: "seepost", sender: view.annotation?.subtitle as Any?)
+        if (((view.annotation?.title)!)! == "My Location"){
+            print("you selected your current location, try again")
+        } else {
+            performSegue(withIdentifier: "segueMapToViewPage", sender: view.annotation as Any?)
+        }
     }
-
 }
