@@ -23,6 +23,11 @@ class ViewViewController: UIViewController {
     @IBAction func like(_ sender: Any) {
         ref = Database.database().reference()
         ref.child("Posts").child(postid!).updateChildValues(["likes": cur_like! + 1])
+        ref.child("Posts").child(postid!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            self.cur_like = value!["likes"] as! Int
+            self.likeBy.text = "Liked by: " + String(self.cur_like!)
+        })
     }
     
     override func viewDidLoad() {
@@ -31,9 +36,9 @@ class ViewViewController: UIViewController {
         ref = Database.database().reference()
         ref.child("Posts").child(postid!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            self.cur_like = value!["likes"] as? Int
+            self.cur_like = value!["likes"] as! Int
+            self.likeBy.text = "Liked by: " + String(self.cur_like!)
         })
-        likeBy.text = "Liked by: " + String(cur_like!)
         // Do any additional setup after loading the view.
     }
     
