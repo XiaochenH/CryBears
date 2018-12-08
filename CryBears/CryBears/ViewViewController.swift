@@ -11,24 +11,29 @@ import Firebase
 
 class ViewViewController: UIViewController {
     
-    
-
     @IBOutlet weak var textfield: UITextView!
     
+    @IBOutlet weak var likeBy: UILabel!
+    
     var labelText: String?
-    var ref: DatabaseReference?
+    var ref: DatabaseReference!
     var postid: String?
+    var cur_like: Int?
     
     @IBAction func like(_ sender: Any) {
         ref = Database.database().reference()
-        
-        //ref?.child("Posts").child(postid).updateChildValues(["likes": 2])
+        ref.child("Posts").child(postid!).updateChildValues(["likes": cur_like! + 1])
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textfield.text = labelText
-
+        textfield.text = labelText!
+        ref = Database.database().reference()
+        ref.child("Posts").child(postid!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            self.cur_like = value!["likes"] as? Int
+        })
+        likeBy.text = "Liked by: " + String(cur_like!)
         // Do any additional setup after loading the view.
     }
     

@@ -33,18 +33,13 @@ class PostViewController: UIViewController {
              "date": result as AnyObject,
              "lat": lat as AnyObject,
              "lon": lon as AnyObject]
-        
         ref?.child("Posts").childByAutoId().setValue(post)
-        
-        
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         postcontent.text = ""
 
         // Do any additional setup after loading the view.
     }
-    
-
 }
