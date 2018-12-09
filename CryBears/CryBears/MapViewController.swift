@@ -154,6 +154,8 @@ extension MapViewController: MKMapViewDelegate {
         }
         if (((annotationView!.annotation?.title)!)! != "My Location"){
             annotationView?.image = UIImage(named: "pin")
+        } else {
+            annotationView?.image = UIImage(named: "current")
         }
         
         annotationView?.canShowCallout = false
