@@ -58,6 +58,8 @@ class MapViewController: UIViewController{
 
                 if let post = item["content"] {
                     let str = post as! String
+                    pin.title = str
+                    /**
                     if ((post! as! String).count > 10) {
                         pin.title = str
                     } else {
@@ -66,7 +68,7 @@ class MapViewController: UIViewController{
                         let secondSpace = rest.firstIndex(of: " ") ?? rest.endIndex
                         let restofrest = str[..<secondSpace] + "..."
                         pin.title = String(restofrest)
-                    }
+                    }**/
                 }
                 
                 if let postid = item["postid"] {
